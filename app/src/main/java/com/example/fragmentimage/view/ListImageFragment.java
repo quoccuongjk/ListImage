@@ -16,6 +16,7 @@ import com.example.fragmentimage.IClickItem;
 import com.example.fragmentimage.LinkImage;
 import com.example.fragmentimage.LinkImageAdapter;
 import com.example.fragmentimage.R;
+import com.example.fragmentimage.databinding.FragmentLinkBinding;
 
 import java.util.ArrayList;
 
@@ -42,17 +43,18 @@ public class ListImageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_link,container,false);
+        //View view = inflater.inflate(R.layout.fragment_link,container,false);
         mMainActivity = (MainActivity) getActivity();
-        rcvLink = view.findViewById(R.id.rcv_link);
+        FragmentLinkBinding binding = FragmentLinkBinding.inflate(inflater);
+        //rcvLink = view.findViewById(R.id.rcv_link);
         linkImageAdapter = new LinkImageAdapter();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
-        rcvLink.addItemDecoration(itemDecoration);
-        rcvLink.setLayoutManager(gridLayoutManager);
-        rcvLink.setAdapter(linkImageAdapter);
+        binding.rcvLink.addItemDecoration(itemDecoration);
+        binding.rcvLink.setLayoutManager(gridLayoutManager);
+        binding.rcvLink.setAdapter(linkImageAdapter);
 
-        return view;
+        return binding.getRoot();
     }
 
     @Override
