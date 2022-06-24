@@ -9,13 +9,16 @@ import android.os.Bundle;
 import com.example.fragmentimage.Constant;
 import com.example.fragmentimage.LinkImage;
 import com.example.fragmentimage.R;
+import com.example.fragmentimage.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager = getFragmentManager();
+    ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(binding.getRoot());
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ListImageFragment listImageFragment = new ListImageFragment();

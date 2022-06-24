@@ -1,22 +1,18 @@
 package com.example.fragmentimage;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fragmentimage.databinding.ItemLinkBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class LinkImageAdapter extends RecyclerView.Adapter<LinkImageAdapter.LinkImageHolder> {
+public class LinkImageAdapter extends RecyclerView.Adapter<LinkImageHolder> {
     private List<LinkImage> linkImages;
     private IClickItem iClickItem;
     private Context mContext;
@@ -29,8 +25,8 @@ public class LinkImageAdapter extends RecyclerView.Adapter<LinkImageAdapter.Link
     @NonNull
     @Override
     public LinkImageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_link,parent,false);
-        return new LinkImageHolder(view);
+        ItemLinkBinding itemBinding = ItemLinkBinding.inflate(LayoutInflater.from(parent.getContext()), parent,false);
+        return new LinkImageHolder(itemBinding);
     }
 
     @Override
@@ -42,15 +38,15 @@ public class LinkImageAdapter extends RecyclerView.Adapter<LinkImageAdapter.Link
         Picasso.with(this.mContext)
                 .load(linkImage.getDownload_url())
                 .resize(300, 300).centerCrop()
-                .into(holder.imageView);
+                .into(holder.itemBinding.image);
 
-        holder.txtid.setText(linkImage.getId());
-        holder.txtauthor.setText(linkImage.getAuthor());
-        holder.txtheight.setText(""+linkImage.getHeight());
-        holder.txtwidth.setText(String.valueOf(linkImage.getWidth()));
-        holder.txturl.setText(linkImage.getUrl());
-        holder.txtdownload_url.setText(linkImage.getDownload_url());
-        holder.linearLayout.setOnClickListener(view ->
+        holder.itemBinding.imageId.setText(linkImage.getId());
+        holder.itemBinding.author.setText(linkImage.getAuthor());
+        holder.itemBinding.height.setText(""+linkImage.getHeight());
+        holder.itemBinding.width.setText(String.valueOf(linkImage.getWidth()));
+        holder.itemBinding.imgUrl.setText(linkImage.getUrl());
+        holder.itemBinding.downloadUrl.setText(linkImage.getDownload_url());
+        holder.itemBinding.getRoot().setOnClickListener(view ->
                 iClickItem.onClickItem(linkImage)
         );
     }
@@ -62,21 +58,13 @@ public class LinkImageAdapter extends RecyclerView.Adapter<LinkImageAdapter.Link
         }
         return linkImages.size();
     }
+}
 
-    public class LinkImageHolder extends RecyclerView.ViewHolder {
-        TextView txtid,txtauthor,txtwidth,txtheight,txturl,txtdownload_url;
-        ImageView imageView;
-        LinearLayout linearLayout;
-        public LinkImageHolder(@NonNull View itemView) {
-            super(itemView);
-            txtid = itemView.findViewById(R.id.id);
-            txtauthor = itemView.findViewById(R.id.author);
-            txtwidth = itemView.findViewById(R.id.width);
-            txtheight = itemView.findViewById(R.id.height);
-            txturl = itemView.findViewById(R.id.url);
-            txtdownload_url = itemView.findViewById(R.id.download_url);
-            linearLayout = itemView.findViewById(R.id.linear);
-            imageView = itemView.findViewById(R.id.image);
-        }
+class LinkImageHolder extends RecyclerView.ViewHolder {
+    ItemLinkBinding itemBinding;
+
+    public LinkImageHolder(@NonNull ItemLinkBinding itemBinding) {
+        super(itemBinding.getRoot());
+        this.itemBinding = itemBinding;
     }
 }
