@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:title="chup hinh"
+            android:id="@+id/menu_photograph"/>
+        <item android:title="doc file"
+            android:id="@+id/menu_read_file"/>
+    </group>
+</menu>
