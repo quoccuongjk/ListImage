@@ -27,12 +27,9 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         button = findViewById(R.id.button);
         imageView = findViewById(R.id.imageView);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,KEY);
-            }
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent,KEY);
         });
     }
 
