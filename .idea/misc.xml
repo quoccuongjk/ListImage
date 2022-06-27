@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/layout/activity_camera.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/layout/fragment_image.xml" value="0.264" />
         <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/layout/fragment_link.xml" value="0.1721311475409836" />
         <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/layout/item_link.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/menu/menu.xml" value="0.253125" />
+        <entry key="..\:/Users/Computer/AndroidStudioProjects/FragmentImage/app/src/main/res/menu/menu_back.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
