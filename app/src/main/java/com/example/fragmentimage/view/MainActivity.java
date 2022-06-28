@@ -12,16 +12,13 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
 
 import com.example.fragmentimage.Constant;
 import com.example.fragmentimage.LinkImage;
 import com.example.fragmentimage.R;
 import com.example.fragmentimage.databinding.ActivityMainBinding;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.normal.TedPermission;
 
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager = getFragmentManager();
@@ -74,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
             case  R.id.menu_read_file:
                 // todo: lam ve chuc nang doc file
                 break;
+            case R.id.menu_picture:
+                Intent intent1 = new Intent(MainActivity.this,ImageActivity.class);
+                startActivity(intent1);
+
         }
         return super.onOptionsItemSelected(item);
     }

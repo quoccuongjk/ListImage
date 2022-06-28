@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FragmentImage</string>
+    <string name="anh_da_luu">Danh sach anh</string>
+    <string name="chup_anh">Chup anh</string>
+    <string name="doc_file">Doc file</string>
+    <string name="save_image">Luu anh</string>
 </resources>

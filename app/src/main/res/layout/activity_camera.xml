@@ -12,10 +12,21 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="chup"/>
+    <Button
+        android:id="@+id/btn_list_image"
+        android:text="@string/anh_da_luu"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_save_image"
+        android:text="@string/save_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 

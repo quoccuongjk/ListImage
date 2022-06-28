@@ -43,10 +43,8 @@ public class ListImageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        //View view = inflater.inflate(R.layout.fragment_link,container,false);
         mMainActivity = (MainActivity) getActivity();
         FragmentLinkBinding binding = FragmentLinkBinding.inflate(inflater);
-        //rcvLink = view.findViewById(R.id.rcv_link);
         linkImageAdapter = new LinkImageAdapter();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
@@ -60,7 +58,6 @@ public class ListImageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         ApiService.apiService.convertLink().enqueue(new Callback<ArrayList<LinkImage>>() {
             @Override
             public void onResponse(Call<ArrayList<LinkImage>> call, Response<ArrayList<LinkImage>> response) {
