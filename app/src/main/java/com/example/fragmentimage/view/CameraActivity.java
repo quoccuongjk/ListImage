@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,12 +23,17 @@ import com.example.fragmentimage.db.ImageCameraDB;
 import com.example.fragmentimage.entity.ImageCamera;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import retrofit2.http.Url;
 
 public class CameraActivity extends AppCompatActivity {
-    Button button,btnLuu,btnListImage;
+    Button button, btnLuu, btnListImage;
     ImageView imageView;
     public static int KEY=123;
     @Override
@@ -47,7 +53,8 @@ public class CameraActivity extends AppCompatActivity {
         btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertImage();
+                //insertImage();
+                save();
                 btnLuu.setEnabled(false);
             }
         });
@@ -71,17 +78,38 @@ public class CameraActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    private void insertImage(){
-        if (imageView != null){
-            BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
-            Bitmap bitmap = bitmapDrawable.getBitmap();
-            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
-            byte[] image = byteArray.toByteArray();
-            ImageCamera imageCamera = new ImageCamera(image);
+//    private void insertImage() {
+//        if (imageView != null) {
+//            BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+//            Bitmap bitmap = bitmapDrawable.getBitmap();
+//            ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
+//            //
+//            String root = Environment.getExternalStorageState().toString();
+//
+//            byte[] image = byteArray.toByteArray();
+//            ImageCamera imageCamera = new ImageCamera(image);
+//            ImageCameraDB.getInstance(this).imageCameraDAO().insert(imageCamera);
+//            Toast.makeText(CameraActivity.this,"thanh cong",Toast.LENGTH_SHORT).show();
+//
+//        }
+//    }
+    public void save() {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bbicon = bitmapDrawable.getBitmap();
+        String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+        OutputStream outStream = null;
+        File file = new File(extStorageDirectory, "er.PNG");
+        try {
+            outStream = new FileOutputStream(file);
+            bbicon.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+            outStream.flush();
+            outStream.close();
+            ImageCamera imageCamera = new ImageCamera(extStorageDirectory);
             ImageCameraDB.getInstance(this).imageCameraDAO().insert(imageCamera);
-            Toast.makeText(CameraActivity.this,"thanh cong",Toast.LENGTH_SHORT).show();
+        } catch(Exception e) {
 
         }
+
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ListImageAdapter extends RecyclerView.Adapter<ListImageAdapter.ListImageHolder> {
     private List<ImageCamera> imageCameraList;
-    public void setData(List<ImageCamera> data){
+    public void setData(List<ImageCamera> data) {
         this.imageCameraList = data;
         notifyDataSetChanged();
     }
@@ -30,20 +30,20 @@ public class ListImageAdapter extends RecyclerView.Adapter<ListImageAdapter.List
     @Override
     public void onBindViewHolder(@NonNull ListImageHolder holder, int position) {
         ImageCamera imageCamera = imageCameraList.get(position);
-        byte[] image = imageCamera.getImage();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
-        holder.imageView.setImageBitmap(bitmap);
+        //byte[] image = imageCamera.getImage();
+        //Bitmap bitmap = BitmapFactory.decodeByteArray(image,0,image.length);
+        //holder.imageView.setImageBitmap(bitmap);
     }
 
     @Override
     public int getItemCount() {
-        if (imageCameraList != null){
+        if (imageCameraList != null) {
             return imageCameraList.size();
         }
         return 0;
     }
 
-    public class ListImageHolder extends RecyclerView.ViewHolder{
+    public class ListImageHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
         public ListImageHolder(@NonNull View itemView) {
             super(itemView);

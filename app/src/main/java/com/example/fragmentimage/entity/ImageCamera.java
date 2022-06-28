@@ -9,13 +9,13 @@ import androidx.room.PrimaryKey;
 public class ImageCamera {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private byte[] image;
+    private String image;
 
     public int getId() {
         return id;
     }
 
-    public ImageCamera(byte[] image) {
+    public ImageCamera(String image) {
         this.image = image;
     }
 
@@ -23,11 +23,11 @@ public class ImageCamera {
         this.id = id;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

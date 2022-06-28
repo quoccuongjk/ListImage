@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.frameLayout, listImageFragment);
         fragmentTransaction.commit();
     }
-    public void showImageFragment(LinkImage linkImage){
+    public void showImageFragment(LinkImage linkImage) {
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         DetailFragment detailFragment = new DetailFragment();
