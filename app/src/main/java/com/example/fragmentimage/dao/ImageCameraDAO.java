@@ -18,6 +18,7 @@ public interface ImageCameraDAO {
    void delete (ImageCamera imageCamera);
     @Update
     void  update(ImageCamera imageCamera);
+
     @Query("SELECT * FROM ImageCamera")
     List<ImageCamera> getListImage();
 }

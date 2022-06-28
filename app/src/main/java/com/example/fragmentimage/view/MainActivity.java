@@ -1,18 +1,15 @@
 package com.example.fragmentimage.view;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fragmentimage.Constant;
 import com.example.fragmentimage.LinkImage;
@@ -23,6 +20,7 @@ import com.example.fragmentimage.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager = getFragmentManager();
     ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.frameLayout, listImageFragment);
         fragmentTransaction.commit();
     }
+
     public void showImageFragment(LinkImage linkImage) {
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -49,30 +48,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        if (fragmentManager.getBackStackEntryCount()>0){
+        if (fragmentManager.getBackStackEntryCount() > 0) {
             fragmentManager.popBackStack();
         } else {
             super.onBackPressed();
         }
     }
+
     @Override
     public boolean onCreatePanelMenu(int featureId, @NonNull Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreatePanelMenu(featureId, menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_photograph:
-                Intent intent = new Intent(MainActivity.this,CameraActivity.class);
+                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
                 startActivity(intent);
                 break;
-            case  R.id.menu_read_file:
+            case R.id.menu_read_file:
                 // todo: lam ve chuc nang doc file
                 break;
             case R.id.menu_picture:
-                Intent intent1 = new Intent(MainActivity.this,ImageActivity.class);
+                Intent intent1 = new Intent(MainActivity.this, ImageActivity.class);
                 startActivity(intent1);
 
         }

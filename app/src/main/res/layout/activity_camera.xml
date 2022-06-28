@@ -11,11 +11,11 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_capture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="chup"/>
+        android:text="@string/chup_hinh"/>
     <Button
         android:id="@+id/btn_list_image"
         android:text="@string/anh_da_luu"
